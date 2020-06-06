@@ -23,13 +23,14 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_gray1, col_cyan,  col_cyan  },
 };
 
-/* media key commands*/
+/* key commands*/
 static const char *upvol[]   = { "/usr/bin/pulseaudio-ctl", "up",     NULL };
 static const char *downvol[] = { "/usr/bin/pulseaudio-ctl", "down",   NULL };
 static const char *mutevol[] = { "/usr/bin/pulseaudio-ctl", "mute",   NULL };
 static const char *prev[]    = { "dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.Prev",   NULL };
 static const char *next[]    = { "dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.Next",   NULL };
 static const char *play[]    = { "dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.PlayPause",   NULL };
+static const char *lock[]    = { "/usr/local/bin/slock", NULL };
 
 
 /* tagging */
@@ -123,6 +124,7 @@ static Key keys[] = {
 	{ 0,         XF86XK_AudioNext,             spawn,          {.v = next    } },
 	{ 0,         XF86XK_AudioPrev,             spawn,          {.v = prev    } },
 	{ 0,         XF86XK_AudioPlay,             spawn,          {.v = play    } },
+	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lock    } },
 };
 
 /* button definitions */
