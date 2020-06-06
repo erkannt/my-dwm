@@ -1,5 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
+#include <X11/XF86keysym.h>
+
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int gappx     = 8;        /* gaps between windows */
@@ -20,6 +22,15 @@ static const char *colors[][3]      = {
 	[SchemeNorm] = { col_white, col_gray1, col_gray2 },
 	[SchemeSel]  = { col_gray1, col_cyan,  col_cyan  },
 };
+
+/* media key commands*/
+static const char *upvol[]   = { "/usr/bin/pulseaudio-ctl", "up",     NULL };
+static const char *downvol[] = { "/usr/bin/pulseaudio-ctl", "down",   NULL };
+static const char *mutevol[] = { "/usr/bin/pulseaudio-ctl", "mute",   NULL };
+static const char *prev[]    = { "dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.Prev",   NULL };
+static const char *next[]    = { "dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.Next",   NULL };
+static const char *play[]    = { "dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.PlayPause",   NULL };
+
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -106,6 +117,12 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} },
+	{ 0,         XF86XK_AudioLowerVolume,      spawn,          {.v = downvol } },
+	{ 0,         XF86XK_AudioMute,             spawn,          {.v = mutevol } },
+	{ 0,         XF86XK_AudioRaiseVolume,      spawn,          {.v = upvol   } },
+	{ 0,         XF86XK_AudioNext,             spawn,          {.v = next    } },
+	{ 0,         XF86XK_AudioPrev,             spawn,          {.v = prev    } },
+	{ 0,         XF86XK_AudioPlay,             spawn,          {.v = play    } },
 };
 
 /* button definitions */
