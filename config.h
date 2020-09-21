@@ -49,6 +49,7 @@ static const Rule rules[] = {
 	{ "Code",     NULL,       NULL,       1 << 2,       0,           -1 },
 	{ "Slack",    NULL,       NULL,       1,            0,           -1 },
 	{ "Spotify",  NULL,       NULL,       1 << 4,       0,           -1 },
+	{ "Signal",   NULL,       NULL,       1 << 4,       0,           -1 },
 	/*
 	*/
 };
