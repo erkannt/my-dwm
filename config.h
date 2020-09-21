@@ -31,7 +31,8 @@ static const char *mutevol[] = { "/usr/bin/pulseaudio-ctl", "mute",   NULL };
 static const char *prev[]    = { "dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.Prev",   NULL };
 static const char *next[]    = { "dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.Next",   NULL };
 static const char *play[]    = { "dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.PlayPause",   NULL };
-static const char *lock[]    = { "systemctl", "suspend", NULL };
+static const char *lock[]    = { "betterlockscreen", "-l", NULL };
+static const char *suspend[] = { "betterlockscreen", "-s", NULL };
 
 
 /* tagging */
@@ -126,6 +127,7 @@ static Key keys[] = {
 	{ 0,         XF86XK_AudioPrev,             spawn,          {.v = prev    } },
 	{ 0,         XF86XK_AudioPlay,             spawn,          {.v = play    } },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lock    } },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = suspend } },
 };
 
 /* button definitions */
