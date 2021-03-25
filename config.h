@@ -50,6 +50,7 @@ static const Rule rules[] = {
 	{ "Slack",    NULL,       NULL,       1,            0,           -1 },
 	{ "Spotify",  NULL,       NULL,       1 << 4,       0,           -1 },
 	{ "Signal",   NULL,       NULL,       1 << 4,       0,           -1 },
+	{ "PulseAudio Volume Control",     NULL,       NULL,       0,            1,           -1 },
 	/*
 	*/
 };
